@@ -1,4 +1,4 @@
-import React, { Component } from 'react';
+import React, { Component, PropTypes } from 'react';
 import {
     Image,
     Text,
@@ -10,6 +10,13 @@ import { unsplash } from '../../config/settings.js'
 import Faves from './Faves';
 
 class FavesContainer extends Component {
+
+    static propTypes = {
+        route: PropTypes.object.isRequired,
+        navigation: PropTypes.object.isRequired,
+        navigator: PropTypes.object.isRequired
+    };
+    
     static route = {
         navigationBar: {
             title: 'Faves',
@@ -18,7 +25,7 @@ class FavesContainer extends Component {
     constructor(props) {
         super(props);
 
-         this.state = {
+        this.state = {
             isLoading: true,
         }
 

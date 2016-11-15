@@ -1,4 +1,4 @@
-import React, { Component } from 'react';
+import React, { Component, PropTypes } from 'react';
 import {
     Image,
     Text,
@@ -11,6 +11,12 @@ import { unsplash } from '../../config/settings.js'
 import Random from './Random';
 
 class RandomContainer extends Component {
+
+    static propTypes = {
+        route: PropTypes.object.isRequired,
+        navigation: PropTypes.object.isRequired,
+        navigator: PropTypes.object.isRequired
+    };
     static route = {
         navigationBar: {
             title: 'Random',
