@@ -10,7 +10,7 @@ export default class Splash extends Component {
   render() {
     return (
       <NavigationProvider router={Router}>
-        <StackNavigation initialRoute={Router.getRoute('random')} />
+        <StackNavigation initialRoute={Router.getRoute('navigationLayout')} />
       </NavigationProvider>
     );
   }
