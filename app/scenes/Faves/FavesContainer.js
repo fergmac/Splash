@@ -7,12 +7,12 @@ import {
 } from 'react-native';
 import { toJson } from 'unsplash-js/native'
 import { unsplash } from '../../config/settings.js'
-import Recent from './Recent';
+import Faves from './Faves';
 
-class RecentContainer extends Component {
+class FavesContainer extends Component {
     static route = {
         navigationBar: {
-            title: 'Recent',
+            title: 'Faves',
         }
     }
     constructor(props) {
@@ -28,10 +28,10 @@ class RecentContainer extends Component {
             );
         } else {
             return (
-                <Recent />
+                <Faves />
             )
         }
     }
 }
 
-export default RecentContainer;
+export default FavesContainer;
