@@ -11,7 +11,11 @@ import { unsplash } from '../../config/settings.js'
 import Random from './Random';
 
 class RandomContainer extends Component {
-
+    static route = {
+        navigationBar: {
+            title: 'Random',
+        }
+    }
     constructor(props) {
         super(props);
 
@@ -34,6 +38,7 @@ class RandomContainer extends Component {
         }
     }
 
+
     render() {
         if (this.state.isLoading) {
             return (
@@ -41,7 +46,7 @@ class RandomContainer extends Component {
             );
         } else {
             return (
-                <Random randomPhoto={this.state.randomPhoto } />
+                <Random randomPhoto={this.state.randomPhoto} />
             )
         }
     }
