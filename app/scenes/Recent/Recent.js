@@ -4,12 +4,9 @@ import {
     Text,
     StyleSheet,
 } from 'react-native';
-// import { UserAvatar } from '../../components/UserAvatar';
-
-// import Router from '../../navigation/routes';
 
 
-const Recent = (props) => {
+const Recent = ({ recentPhotos }) => {
     return (
             <View>
                <Text>Recent</Text>
