@@ -1,16 +1,16 @@
 import Realm from '../config/models';
 
-export const faved = () => {
-
-
+export const faved = (photoId) => {
+    const isItChecked = realm.objects('Fave').filtered('id == $0',  photoId)
+    isItchecked[0] ? true : false
 }
 
-export const saveFave = (faved, favId) => {
+export const saveFave = (faved, photoId) => {
     realm.write(() => {
         // let isStared = faves.filtered('id == $0',  favId);
         if (faved) {
             // photo is already faved then delete 
-            let photo = realm.objects('Fave').filtered('id == $0',  favId)
+            let photo = realm.objects('Fave').filtered('id == $0',  photoId)
             realm.delete(faves); 
         } else {
             //otherwise add faved photo to database
