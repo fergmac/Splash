@@ -3,6 +3,7 @@ import {
     Image,
     Text,
     View,
+    ListView,
     ActivityIndicator,
 } from 'react-native';
 import { toJson } from 'unsplash-js/native'
@@ -19,9 +20,9 @@ class UserContainer extends Component {
         navigator: PropTypes.object.isRequired
     };
     static route = {
-        title(params) {
-            return `Greeting for ${params.name}`;
-        },
+        navigationBar: {
+            title: 'User',
+        }
     }
     _goBackRecent() {
         props.navigator.pop();
@@ -36,7 +37,8 @@ class UserContainer extends Component {
         }
     }
     componentWillMount() {
-        unsplash.currentUser.profile()
+        //
+        unsplash.users.profile(this.props.route.params.username)
             .then(toJson)
             .then(json => {
                 this.setState({ user: json })

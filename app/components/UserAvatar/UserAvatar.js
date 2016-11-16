@@ -21,7 +21,7 @@ const UserAvatar = (props) => {
                 
                 >
             </Image >
-            <Text onPress={props.goToUser}>{props.user.name} </Text>
+            <Text>{props.user.name} </Text>
         </View>
     );
 }

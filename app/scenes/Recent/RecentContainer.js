@@ -27,8 +27,8 @@ class RecentContainer extends Component {
             title: 'Recent',
         }
     }
-    _goToUser() {
-    this.props.navigator.push(Router.getRoute('user', { ferg: 'ferg' }));
+    _goToUser(username) {
+    this.props.navigator.push(Router.getRoute('user', {username}));
 }
     constructor(props) {
         super(props);

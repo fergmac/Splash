@@ -3,6 +3,8 @@ import {
     View,
     Text,
     StyleSheet,
+    Image,
+    ListView
 } from 'react-native';
 import styles from './styles';
 
@@ -10,17 +12,17 @@ const User = (props) => {
     console.log(props)
     return (
 
-        <View style={styles.container}>
+        <View>
             <Image
                 resizeMode={'cover'}
                 source={{ uri: props.user.profile_image.large }}
                 style={styles.image}
                 />
-            <Text>{ props.route.params.name}</Text>
-            <Text onPress={props.goBackRecent}>
+            <Text>{props.user.first_name}</Text>
+            <Text onPress={props.goToRecent}>
                 Go back to Recent
-       </Text>
-        </View>
+            </Text>
+        </View >
     )
 }
 
