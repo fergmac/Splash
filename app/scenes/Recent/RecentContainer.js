@@ -9,7 +9,7 @@ import { toJson } from 'unsplash-js/native'
 import { unsplash } from '../../config/settings.js'
 import Recent from './Recent';
 import Loader from '../../components/Loader';
-import getFullPhotoData from '../../lib/splashHelpers';
+import { getFullPhotoData } from '../../lib/splashHelpers';
 // import styles from './styles';
 
 class RecentContainer extends Component {
@@ -27,7 +27,7 @@ class RecentContainer extends Component {
     }
     constructor(props) {
         super(props);
-
+        //this.ds for the list view
         this.ds = new ListView.DataSource({ rowHasChanged: (r1, r2) => r1 !== r2 });
 
         this.state = {
@@ -52,6 +52,7 @@ class RecentContainer extends Component {
                 <Loader />
             );
         } else {
+            
             return (
                 <Recent recentPhotos={this.state.dataSource} />
             );
@@ -68,6 +69,7 @@ class RecentContainer extends Component {
                 return getFullPhotoData(json);
             })
             .then( results => {
+                console.log(results)
                 this.setState({
                     dataSource: this.ds.cloneWithRows(results)
                 });
