@@ -1,5 +1,5 @@
 
-import { StyleSheet } from 'react-native';
+import { StyleSheet, Dimensions } from 'react-native';
 
 export const styles = StyleSheet.create({
     container: {
@@ -14,7 +14,7 @@ export const styles = StyleSheet.create({
         marginTop: 5,
     },
     image: {
-        height: 200,
-        width: 200,
+        height: Dimensions.get('window').height,
+        width: Dimensions.get('window').width,
     }
 })

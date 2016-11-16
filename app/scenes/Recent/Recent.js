@@ -5,17 +5,17 @@ import {
     StyleSheet,
 } from 'react-native';
 import PhotoList from '../../components/PhotoList';
+import styles from './styles';
+
 
 
 const Recent = (props) => {
+    console.log(props.recentPhotos)
     return (
-        <PhotoList recentPhotos={props.recentPhotos} />
+        <PhotoList recentPhotos={props.recentPhotos} goToUser={props.goToUser} />
     )
 }
 
-const styles = StyleSheet.create({
-
-});
 
 Recent.propTypes = {
     recentPhotos: PropTypes.object.isRequired,

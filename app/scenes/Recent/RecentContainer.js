@@ -10,6 +10,8 @@ import { unsplash } from '../../config/settings.js'
 import Recent from './Recent';
 import Loader from '../../components/Loader';
 import { getFullPhotoData } from '../../lib/splashHelpers';
+import { Router } from '../../navigation/routes';
+
 // import styles from './styles';
 
 class RecentContainer extends Component {
@@ -25,8 +27,12 @@ class RecentContainer extends Component {
             title: 'Recent',
         }
     }
+    _goToUser() {
+    this.props.navigator.push(Router.getRoute('user', { ferg: 'ferg' }));
+}
     constructor(props) {
         super(props);
+        this._goToUser = this._goToUser.bind(this)
         //this.ds for the list view
         this.ds = new ListView.DataSource({ rowHasChanged: (r1, r2) => r1 !== r2 });
 
@@ -46,6 +52,7 @@ class RecentContainer extends Component {
         }
     }
 
+
     render() {
         if (this.state.isLoading) {
             return (
@@ -54,7 +61,7 @@ class RecentContainer extends Component {
         } else {
             
             return (
-                <Recent recentPhotos={this.state.dataSource} />
+                <Recent recentPhotos={this.state.dataSource} goToUser={this._goToUser} />
             );
         }
     }
@@ -76,6 +83,7 @@ class RecentContainer extends Component {
             })
             .catch(error => console.log(`Error fetching photo JSON: ${error}`));
     }
+    
 }
 
 export default RecentContainer;

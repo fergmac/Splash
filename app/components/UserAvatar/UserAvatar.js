@@ -1,44 +1,34 @@
 
-import React from 'react';
+import React, { PropTypes } from 'react';
 import {
     View,
     Image,
     Text,
     StyleSheet,
 } from 'react-native';
+import styles from './styles';
+import Router from '../../navigation/routes.js'
+import {Route} from '../../scenes/Recent'
+
 
 const UserAvatar = (props) => {
     console.log(props.user)
     return (
-        <View style={styles.avatarContainer}>
+        <View>
             <Image
                 resizeMode={'contain'}
                 source={{ uri: props.user.profile_image.medium }}
-                style={styles.avatar}
+                
                 >
             </Image >
-            <Text style={styles.avatar}>{props.user.name} </Text>
+            <Text onPress={props.goToUser}>{props.user.name} </Text>
         </View>
     );
 }
 
-const styles = StyleSheet.create({
-    avatarContainer: {
-        marginTop: 20,
-        flex: 1,
-        flexDirection: 'row',
-    },
-    avatar: {
-        flex: .25,
-        borderRadius: 50,
-        height: 50,
-        width: 50,
-        backgroundColor: 'transparent',
-    }
-});
 
 UserAvatar.propTypes = {
-    user: React.PropTypes.object.isRequired
+    user: React.PropTypes.object.isRequired,
 }
 
 export default UserAvatar;

@@ -9,6 +9,7 @@ import { toJson } from 'unsplash-js/native'
 import { unsplash } from '../../config/settings.js'
 // import { randomStyles } from './styles.js'
 import User from './User';
+import Router from '../../navigation/routes.js';
 
 class UserContainer extends Component {
 
@@ -18,12 +19,16 @@ class UserContainer extends Component {
         navigator: PropTypes.object.isRequired
     };
     static route = {
-        navigationBar: {
-            title: 'User',
-        }
+        title(params) {
+            return `Greeting for ${params.name}`;
+        },
+    }
+    _goBackRecent() {
+        props.navigator.pop();
     }
     constructor(props) {
         super(props);
+        this._goBackRecent = this._goBackRecent.bind(this)
 
         this.state = {
             isLoading: true,
@@ -52,7 +57,7 @@ class UserContainer extends Component {
             );
         } else {
             return (
-                <User user={this.state.user} />
+                <User user={this.state.user} goToRecent={this._goBackRecent} />
             )
         }
     }

@@ -7,6 +7,7 @@ import Random from '../scenes/Random';
 import Recent from '../scenes/Recent';
 import Faves from '../scenes/Faves';
 import About from '../scenes/About';
+import User from '../scenes/User';
 
 export const Router = createRouter(() => ({
     navigationLayout: () => NavigationLayout,
@@ -14,6 +15,5 @@ export const Router = createRouter(() => ({
     recent: () => Recent,
     faves: () => Faves,
     about: () => About,
+    user: ()=> User,
 }));
-
-//navigation layout in initial route
