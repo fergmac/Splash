@@ -10,7 +10,7 @@ import { styles } from './styles';
 import { UserAvatar } from '../UserAvatar';
 
 const PhotoList = (props) => {
-    console.log(props.recentPhotos)
+    console.log("url", props.recentPhotos)
     return (
         <View style={styles.container}>
             <ListView
@@ -18,14 +18,15 @@ const PhotoList = (props) => {
                 renderRow={(data) => {
                     return (
                         <View style={styles.row}>
-                        <TouchableHighlight onPress={() => props.goToPhotoBox()}>
-                            <Image style={styles.image} source={{ uri: data.urls.raw }} >
-                            
-                            {/*  wrapping the method in arrow function so that it isnt called before onPress*/}
-                                <TouchableOpacity onPress={() => props.goToUser(data.user.username)}>
-                                    <UserAvatar user={data.user} />
-                                </TouchableOpacity>
-                            </Image>
+                            <TouchableOpacity onPress={() => props.goToUser(data.user.username)}>
+                                <UserAvatar user={data.user} />
+                            </TouchableOpacity>
+                            <TouchableHighlight onPress={() => props.goToPhotoBox(data)}>
+                                <Image style={styles.image} source={{ uri: data.urls.raw }} >
+
+                                    {/*  wrapping the method in arrow function so that it isnt called before onPress*/}
+
+                                </Image>
                             </TouchableHighlight>
                         </View>)
                 } }
