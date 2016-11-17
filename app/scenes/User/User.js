@@ -13,15 +13,13 @@ const User = (props) => {
     return (
 
         <View>
-            <Image
-                resizeMode={'cover'}
-                source={{ uri: props.user.profile_image.large }}
-                style={styles.image}
-                />
-            <Text>{props.user.first_name}</Text>
-            <Text onPress={props.goToRecent}>
-                Go back to Recent
-            </Text>
+            <Text>{props.user.name}</Text>
+            <Text>{props.user.location}</Text>
+            <Text>{props.user.portfolio_url}</Text>
+            <Text>{props.user.bio}</Text>
+            <Text onPress={props.goToRecent}></Text>
+            
+
         </View >
     )
 }
