@@ -8,6 +8,7 @@ import Recent from '../scenes/Recent';
 import Faves from '../scenes/Faves';
 import About from '../scenes/About';
 import User from '../scenes/User';
+import PhotoBox from '../scenes/PhotoBox';
 
 export const Router = createRouter(() => ({
     navigationLayout: () => NavigationLayout,
@@ -15,5 +16,6 @@ export const Router = createRouter(() => ({
     recent: () => Recent,
     faves: () => Faves,
     about: () => About,
-    user: ()=> User,
+    user: () => User,
+    photobox: () => PhotoBox,
 }));
