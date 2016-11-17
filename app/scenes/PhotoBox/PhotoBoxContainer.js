@@ -19,7 +19,7 @@ class PhotoBoxContainer extends Component {
     };
     static route = {
         navigationBar: {
-            title: 'PhotoBox',
+            visible: false,
         }
     }
     _goBackRecent() {
