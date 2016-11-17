@@ -28,11 +28,15 @@ class RecentContainer extends Component {
         }
     }
     _goToUser(username) {
-    this.props.navigator.push(Router.getRoute('user', {username}));
-}
+        this.props.navigator.push(Router.getRoute('user', { username }));
+    }
+    _goToPhotoBox(photoId) {
+        this.props.navigator.push(Router.getRoute('photoBox', { photoId }));
+    }
     constructor(props) {
         super(props);
         this._goToUser = this._goToUser.bind(this)
+        this._goToPhotoBox = this._goToPhotoBox.bind(this)
         //this.ds for the list view
         this.ds = new ListView.DataSource({ rowHasChanged: (r1, r2) => r1 !== r2 });
 
@@ -47,7 +51,7 @@ class RecentContainer extends Component {
         this.getRecentPhotosJson();
     }
     componentDidUpdate() {
-        if( this.state.dataSource && this.state.isLoading ){
+        if (this.state.dataSource && this.state.isLoading) {
             this.setState({ isLoading: false });
         }
     }
@@ -59,23 +63,23 @@ class RecentContainer extends Component {
                 <Loader />
             );
         } else {
-            
+
             return (
-                <Recent recentPhotos={this.state.dataSource} goToUser={this._goToUser} />
+                <Recent recentPhotos={this.state.dataSource} goToUser={this._goToUser} goToPhotoBox={this._goToPhotoBox}/>
             );
         }
     }
 
     getRecentPhotosJson() {
         unsplash.photos.listPhotos(1, 2, 'latest')
-        //changes json data into array of object literals
+            //changes json data into array of object literals
             .then(toJson)
             .then(json => {
                 // Your code
                 //returns full photo data blob
                 return getFullPhotoData(json);
             })
-            .then( results => {
+            .then(results => {
                 console.log(results)
                 this.setState({
                     dataSource: this.ds.cloneWithRows(results)
@@ -83,7 +87,7 @@ class RecentContainer extends Component {
             })
             .catch(error => console.log(`Error fetching photo JSON: ${error}`));
     }
-    
+
 }
 
 export default RecentContainer;
