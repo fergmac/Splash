@@ -17,7 +17,7 @@ const PhotoList = (props) => {
                 renderRow={(data) => {
                     return (
                         <View style={styles.row}>
-                            <Image style={styles.image} source={{ uri: data.urls.raw }} >
+                            <Image style={styles.image} source={{ uri: data.urls.raw }} onPress={() => props.goToPhotoBox()}>
                             {/*  wrapping the method in arrow function so that it isnt called before onPress*/}
                                 <TouchableOpacity onPress={() => props.goToUser(data.user.username)}>
                                     <UserAvatar user={data.user} />

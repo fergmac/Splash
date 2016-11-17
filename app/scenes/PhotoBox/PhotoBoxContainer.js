@@ -22,6 +22,9 @@ class PhotoBoxContainer extends Component {
             title: 'PhotoBox',
         }
     }
+    _goBackRecent() {
+        props.navigator.pop();
+    }
     constructor(props) {
         super(props);
 
