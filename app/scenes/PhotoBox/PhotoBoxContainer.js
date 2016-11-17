@@ -4,12 +4,13 @@ import {
     Text,
     View,
     ActivityIndicator,
+    saveToCameraRoll,
 } from 'react-native';
 import { toJson } from 'unsplash-js/native'
 import { unsplash } from '../../config/settings.js';
 import PhotoBox from './PhotoBox';
-import saveFave from '../../lib/databaseHelpers';
 import Loader from '../../components/Loader';
+import { faved, saveFave } from '../../lib/databaseHelpers';
 
 class PhotoBoxContainer extends Component {
 
@@ -25,16 +26,28 @@ class PhotoBoxContainer extends Component {
     }
 
     _goBackRecent() {
-        props.navigator.pop();
+        this.props.navigator.pop();
     }
-  
+    _callSaveFave() {
+        saveFave(faved(this.props.photo.id), this.props.photo.id)
+    }
+    constructor(props) {
+        super(props);
+        this._goBackRecent = this._goBackRecent.bind(this)
+
+    }
+
 
 
     render() {
         console.log("photos", this.props)
 
         return (
-            <PhotoBox photo={this.props.photo} />
+            <PhotoBox 
+                photo={this.props.photo} 
+                goToRecent={this._goBackRecent} 
+                callSaveFave={this._callSaveFave.bind(this)}
+            />
         )
     }
 }
