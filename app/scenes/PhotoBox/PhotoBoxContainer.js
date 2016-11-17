@@ -6,9 +6,10 @@ import {
     ActivityIndicator,
 } from 'react-native';
 import { toJson } from 'unsplash-js/native'
-import { unsplash } from '../../config/settings.js'
-// import { randomStyles } from './styles.js'
+import { unsplash } from '../../config/settings.js';
 import PhotoBox from './PhotoBox';
+import saveFave from '../../lib/databaseHelpers';
+import Loader from '../../components/Loader';
 
 class PhotoBoxContainer extends Component {
 
@@ -22,30 +23,21 @@ class PhotoBoxContainer extends Component {
             visible: false,
         }
     }
+
     _goBackRecent() {
         props.navigator.pop();
     }
-    constructor(props) {
-        super(props);
-
-        this.state = {
-            isLoading: true,
-        
-        }
-    }
+  
 
 
     render() {
-        if (this.state.isLoading) {
-            return (
-                <ActivityIndicator animating={true} size="small" color="black" />
-            );
-        } else {
-            return (
-                <PhotoBox />
-            )
-        }
+        console.log("photos", this.props)
+
+        return (
+            <PhotoBox photo={this.props.photo} />
+        )
     }
 }
+
 
 export default PhotoBoxContainer;

@@ -30,9 +30,9 @@ class RecentContainer extends Component {
     _goToUser(username) {
         this.props.navigator.push(Router.getRoute('user', { username }));
     }
-    _goToPhotoBox(photoId) {
+    _goToPhotoBox(photo) {
         this.props.navigation.getNavigator('ferg')
-        .push(Router.getRoute('PhotoBox', { photoId: 666 }));
+        .push(Router.getRoute('photoBox', { photo }));
     }
     constructor(props) {
         super(props);
