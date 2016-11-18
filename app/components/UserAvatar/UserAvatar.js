@@ -6,7 +6,7 @@ import {
     Text,
     StyleSheet,
 } from 'react-native';
-import styles from './styles';
+import { styles } from './styles';
 import Router from '../../navigation/routes.js'
 import {Route} from '../../scenes/Recent'
 
@@ -14,14 +14,14 @@ import {Route} from '../../scenes/Recent'
 const UserAvatar = (props) => {
     console.log(props.user)
     return (
-        <View>
+        <View style={styles.container}>
             <Image
                 resizeMode={'contain'}
                 source={{ uri: props.user.profile_image.medium }}
-                
+                style={styles.image}
                 >
             </Image >
-            <Text>{props.user.name} </Text>
+            <Text style={styles.text}>{props.user.name}</Text>
         </View>
     );
 }

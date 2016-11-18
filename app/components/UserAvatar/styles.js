@@ -1,21 +1,22 @@
 import { StyleSheet } from 'react-native';
 
 export const styles = StyleSheet.create({
-    avatarStyle: {
-        paddingTop: 30,
-        paddingBottom: 30,
-        justifyContent: 'flex-start'
-    },
-    avatarContainer: {
-        marginTop: 20,
-        flex: 1,
+    container: {
         flexDirection: 'row',
+        paddingTop: 20,
+        paddingBottom: 20,
+        paddingLeft: 10,
+        paddingRight: 10,
+        justifyContent: 'flex-start',
+        backgroundColor: 'transparent',
     },
-    avatar: {
-        flex: .5,
-        borderRadius: 50,
+    image: {
         height: 50,
         width: 50,
-        backgroundColor: 'transparent',
+        borderRadius: 25,
+    },
+    text: {
+        paddingLeft: 10,
+        paddingTop: 15,
     }
 });
