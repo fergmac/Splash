@@ -1,3 +1,5 @@
+import { Platform } from 'react-native';
+
 export const colors = {
   nearBlack: '#111111',
   mediumGrey: '#999999',
@@ -11,6 +13,14 @@ export const colors = {
 
 export const typography = {
   baseSize: 16,
-  fontMain: 'Courier',
-  fontAlt: 'Helvetica',
+      ...Platform.select({
+      ios: {
+          fontMain: 'Courier',
+          fontAlt: 'Helvetica',
+      },
+      android: {
+          fontMain: 'CourierPrime',
+          fontAlt: 'Roboto',
+      },
+    }),
 };
