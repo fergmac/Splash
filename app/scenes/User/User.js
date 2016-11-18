@@ -11,15 +11,12 @@ import styles from './styles';
 const User = (props) => {
     console.log(props)
     return (
-
         <View>
             <Text>{props.user.name}</Text>
             <Text>{props.user.location}</Text>
             <Text>{props.user.portfolio_url}</Text>
             <Text>{props.user.bio}</Text>
             <Text onPress={props.goToRecent}></Text>
-            
-
         </View >
     )
 }

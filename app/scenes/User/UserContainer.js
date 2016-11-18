@@ -5,11 +5,11 @@ import {
     ListView,
     ActivityIndicator,
 } from 'react-native';
-import { toJson } from 'unsplash-js/native'
-import { unsplash } from '../../config/settings.js'
-// import { randomStyles } from './styles.js'
+import { toJson } from 'unsplash-js/native';
+import { unsplash } from '../../config/settings.js';
 import User from './User';
 import Router from '../../navigation/routes.js';
+import Loader from '../../components/Loader';
 
 class UserContainer extends Component {
 
@@ -54,7 +54,7 @@ class UserContainer extends Component {
     render() {
         if (this.state.isLoading) {
             return (
-                <ActivityIndicator animating={true} size="small" color="black" />
+                <Loader />
             );
         } else {
             return (
