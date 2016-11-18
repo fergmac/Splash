@@ -10,7 +10,7 @@ import styles from './styles';
 
 
 const Recent = (props) => {
-    console.log(props.recentPhotos)
+    console.log("recent",props.recentPhotos)
     return (
         <PhotoList recentPhotos={props.recentPhotos} goToUser={props.goToUser} goToPhotoBox={props.goToPhotoBox}/>
     )

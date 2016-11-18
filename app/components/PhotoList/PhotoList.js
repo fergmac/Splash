@@ -1,5 +1,6 @@
 import React, { PropTypes } from 'react';
 import {
+    Text,
     View,
     ListView,
     Image,
@@ -18,16 +19,18 @@ const PhotoList = (props) => {
                 renderRow={(data) => {
                     return (
                         <View style={styles.row}>
+                            
+                            <TouchableHighlight onPress={() => props.goToPhotoBox(data)}>
+                                <Image style={styles.image} source={{ uri: data.urls.raw }} >
+                                </Image>
+                            </TouchableHighlight>
                             <TouchableOpacity onPress={() => props.goToUser(data.user.username)}>
                                 <UserAvatar user={data.user} />
                             </TouchableOpacity>
-                            <TouchableHighlight onPress={() => props.goToPhotoBox(data)}>
-                                <Image style={styles.image} source={{ uri: data.urls.raw }} >
-
-                                    {/*  wrapping the method in arrow function so that it isnt called before onPress*/}
-
-                                </Image>
-                            </TouchableHighlight>
+                            <View style={styles.text}>
+                            <Text>{data.created_at}</Text>
+                            <Text>{data.location.city}, {data.location.country}</Text>
+                            </View>
                         </View>)
                 } }
                 />

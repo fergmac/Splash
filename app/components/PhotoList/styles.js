@@ -14,7 +14,10 @@ export const styles = StyleSheet.create({
         marginTop: 5,
     },
     image: {
-        height: Dimensions.get('window').height,
+        height: Dimensions.get('window').height/2,
         width: Dimensions.get('window').width,
+    },
+    text: {
+        flexDirection: 'row',
     }
 })
