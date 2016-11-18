@@ -5,7 +5,7 @@ import {
     DrawerNavigation,
     DrawerNavigationItem,
 } from '@exponent/ex-navigation';
-
+import { StyleSheet, View, Text, isSelected } from 'react-native';
 import { Router } from './routes';
 import Icon from 'react-native-vector-icons/Octicons';
 import { colors } from '../config/styles';
@@ -26,14 +26,35 @@ class NavigationLayout extends Component {
         navigationBar: {
             visible: false,
         }
-    }
+    };
 
-    iconRenderer(isSelected, iconName) {
-        const color = isSelected ? 'black' : colors.mediumGrey
-        return <Icon name={iconName} size={24} color={color} />
-    }
+    // iconRenderer(isSelected, iconName) {
+    //     const color = isSelected ? 'black' : colors.mediumGrey
+    //     return <Icon name={iconName} size={24} color={color} />
+    // }
 
     // renderTitleFunction here
+    _renderHeader() {
+        return (
+            <View style={styles.header}>
+            </View>
+        );
+    };
+    // _renderIcon() {
+    //     const color = isSelected ? 'black' : colors.mediumGrey
+    //     return (
+    //         <Icon name={iconName} size={24} color={color} />
+    //     );   
+    // };
+    _renderTitle(text, iconName,  isSelected) {
+        const color = isSelected ? 'black' : colors.mediumGrey
+        return (
+            <Text style={[styles.titleText, isSelected ? styles.selectedTitleText : {}]}>
+                <Icon name={iconName} size={24} color={color} />{text}
+            </Text>
+        );
+    };
+
 
 
     render() {
@@ -46,7 +67,8 @@ class NavigationLayout extends Component {
                 <DrawerNavigationItem
                     id="recent"
                     title="Recent"
-                    renderIcon={isSelected => this._iconRenderer('watch', isSelected)}
+                    // renderIcon={isSelected => this._RenderIcon('watch', isSelected)}
+                    renderTitle={isSelected => this._renderTitle('Recent', 'watch', isSelected)}
                     // selectedStyle={styles.selectedTab}
                     // renderIcon={(isSelected) => <Image source={require('../images/recent.png')} />} 
                     >
@@ -61,7 +83,8 @@ class NavigationLayout extends Component {
                 <DrawerNavigationItem
                     id="random"
                     title="Random"
-                    renderIcon={isSelected => this._iconRenderer('smiley', isSelected)}
+                    // renderIcon={isSelected => this._RenderIcon('smiley', isSelected)}
+                    renderTitle={isSelected => this._renderTitle('Random', 'smiley', isSelected)}
                     // selectedStyle={styles.selectedTab}
                     // renderIcon={(isSelected) => <Image source={require('../images/random.png')} />}
                     >
@@ -75,7 +98,8 @@ class NavigationLayout extends Component {
                 <DrawerNavigationItem
                     id="faves"
                     title="Faves"
-                    renderIcon={isSelected => this._iconRenderer('heart', isSelected)}
+                    // renderIcon={isSelected => this._RenderIcon('heart', isSelected)}
+                    renderTitle={isSelected => this._renderTitle('Faves', 'heart', isSelected)}
                     // selectedStyle={styles.selectedTab}
                     // renderIcon={(isSelected) => <Image source={require('../images/faves.png')} />}
                     >
@@ -89,7 +113,8 @@ class NavigationLayout extends Component {
                 <DrawerNavigationItem
                     id="about"
                     title="About"
-                    renderIcon={isSelected => this._iconRenderer('info', isSelected)}
+                    // renderIcon={isSelected => this._iconRenderer('info', isSelected)}
+                    renderTitle={isSelected => this._renderTitle('About', 'info', isSelected)}
                     // selectedStyle={styles.selectedTab}
                     // renderIcon={(isSelected) => <Image source={require('../images/about.png')} />}
                     >
@@ -102,36 +127,26 @@ class NavigationLayout extends Component {
             </DrawerNavigation>
         );
     }
-      _renderHeader = () => {
-    return (
-      <View style={styles.header}>
-      </View>
-    );
-  };
-
-  _renderTitle() {
-    return (
-      <Text style={[styles.titleText, isSelected ? styles.selectedTitleText : {}]}>
-        {text}
-      </Text>
-    );
-  };
 }
-const styles = StyleSheet.create({
-  header: {
-    height: 20
-  },
 
-  selectedItemStyle: {
-    backgroundColor: 'blue'
-  },
 
-  titleText: {
-    fontWeight: 'bold'
-  },
+    const styles = StyleSheet.create({
+        header: {
+            height: 20
+        },
 
-  selectedTitleText: {
-    color: 'white'
-  }
-});
-export default NavigationLayout;
+        selectedItemStyle: {
+            backgroundColor: 'blue'
+        },
+
+        titleText: {
+            fontWeight: 'bold'
+        },
+
+        selectedTitleText: {
+            color: 'black'
+        }
+    });
+
+
+    export default NavigationLayout;
