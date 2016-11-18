@@ -30,19 +30,20 @@ class UserContainer extends Component {
         super(props);
         this._goBackRecent = this._goBackRecent.bind(this)
 
+        this.ds = new ListView.DataSource({ rowHasChanged: (r1, r2) => r1 !== r2 });
+
         this.state = {
+            dataSource: this.ds,
             isLoading: true,
-            user: {}
+            user: {},
         }
     }
     componentWillMount() {
-        //
-        unsplash.users.profile(this.props.route.params.username)
-            .then(toJson)
-            .then(json => {
-                this.setState({ user: json })
-            })
-            .catch(error => console.log(`Error fetching JSON: ${error}`));
+        const username = this.props.route.params.username;
+        this.getUserProfile(username);
+        this.getUserPhotos(username);
+
+
     }
     componentDidUpdate() {
         if (this.state.user && this.state.isLoading) {
@@ -52,16 +53,38 @@ class UserContainer extends Component {
 
 
     render() {
+        console.log("hello", this)
         if (this.state.isLoading) {
             return (
                 <Loader />
             );
         } else {
             return (
-                <User user={this.state.user} goToRecent={this._goBackRecent} />
+                <User user={this.state.user} photos={this.state.dataSource} goToRecent={this._goBackRecent} />
             )
         }
     }
+
+    getUserProfile(username) {
+        unsplash.users.profile(username)
+            .then(toJson)
+            .then(json => {
+                this.setState({ user: json })
+            })
+            .catch(error => console.log(`Error fetching JSON: ${error}`));
+    }
+    getUserPhotos(username) {
+        unsplash.users.photos(username, 1, 3, 'popular')
+            .then(toJson)
+            .then(results => {
+                console.log("results", results)
+                this.setState({
+                    dataSource: this.ds.cloneWithRows(results)
+                });
+            })
+            .catch(error => console.log(`Error fetching photo JSON: ${error}`));
+    }
+
 }
 
 export default UserContainer;
