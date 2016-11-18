@@ -15,13 +15,19 @@ import { faved, saveFave } from '../../lib/databaseHelpers';
 
 
 const PhotoBox = (props) => {
+    console.log("photos2", props.photo)
     return (
         <View style={styles.container} >
-            <View style={styles.exitButton}>
+            <View style={styles.header}>
+                <View style={styles.avatarContainer}>
+                <Image style={styles.avatar} source={{ uri: props.photo.user.profile_image.small }} />
+                <Text style={styles.text}>{props.photo.user.name}</Text>
+                </View>
                 <TouchableHighlight onPress={props.goToRecent}>
                     <Icon name='x' size={24} color='white' />
                 </TouchableHighlight>
             </View>
+            <Image style={styles.image} source={{ uri: props.photo.urls.raw }}>
             <View style={styles.buttons}>
                 {Platform.OS === 'ios' &&
                     <TouchableHighlight onPress={() => CameraRoll.saveToCameraRoll(props.photo.urls.raw, "photo")}>
@@ -32,10 +38,10 @@ const PhotoBox = (props) => {
                     <Icon name='star' size={24} color='white' />
                 </TouchableHighlight>
             </View>
-            <Image style={styles.image} source={{ uri: props.photo.urls.raw }} />
+            </Image>
             <View style={styles.details}>
-                <Text style={styles.text} >Likes: {props.photo.likes}</Text>
-                <Text style={styles.text} >Downloads: {props.photo.downloads}</Text>
+                <Text style={styles.text} >Likes {props.photo.likes}</Text>
+                <Text style={styles.text} >Downloads {props.photo.downloads}</Text>
             </View>
         </View>
     )
