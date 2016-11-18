@@ -17,5 +17,5 @@ export const Router = createRouter(() => ({
     faves: () => Faves,
     about: () => About,
     user: () => User,
-    photobox: () => PhotoBox,
+    photoBox: () => PhotoBox,
 }));

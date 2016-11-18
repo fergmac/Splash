@@ -31,6 +31,7 @@ class PhotoBoxContainer extends Component {
     _callSaveFave() {
         saveFave(faved(this.props.photo.id), this.props.photo.id)
     }
+    //do this but also with a faved so that we can change color of icon conditionally
     constructor(props) {
         super(props);
         this._goBackRecent = this._goBackRecent.bind(this)
