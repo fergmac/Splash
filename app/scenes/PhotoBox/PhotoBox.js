@@ -13,6 +13,16 @@ import { styles } from './styles';
 import Icon from 'react-native-vector-icons/Octicons';
 import { faved, saveFave } from '../../lib/databaseHelpers';
 
+const renderStarIcon = (isFaved, iconName, size) => {
+    return (
+      <Icon name={iconName} size={24} color={isFaved ? 'yellow' : '#999999'} />
+    )
+}
+const renderIcon = (iconName, size) => {
+    return (
+        <Icon name={iconName} size={size} color={'#999999'} />
+    )
+}
 
 const PhotoBox = (props) => {
     console.log("photos2", props.photo)
@@ -24,18 +34,19 @@ const PhotoBox = (props) => {
                 <Text style={styles.text}>{props.photo.user.name}</Text>
                 </View>
                 <TouchableHighlight onPress={props.goToRecent}>
-                    <Icon name='x' size={24} color='white' />
+                    {renderIcon('x', 24)}
                 </TouchableHighlight>
             </View>
             <Image style={styles.image} source={{ uri: props.photo.urls.raw }}>
             <View style={styles.buttons}>
                 {Platform.OS === 'ios' &&
                     <TouchableHighlight onPress={() => CameraRoll.saveToCameraRoll(props.photo.urls.raw, "photo")}>
-                        <Icon name='cloud-download' size={24} color='white' />
+                  
+                        {renderIcon('cloud-download', 24)}
                     </TouchableHighlight>
                 }
                 <TouchableHighlight onPress={props.callSaveFave}>
-                    <Icon name='star' size={24} color='white' />
+                    {renderStarIcon(props.isFaved, 'star', 24)}
                 </TouchableHighlight>
             </View>
             </Image>

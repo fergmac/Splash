@@ -11,6 +11,7 @@ import { unsplash } from '../../config/settings.js';
 import PhotoBox from './PhotoBox';
 import Loader from '../../components/Loader';
 import { faved, saveFave } from '../../lib/databaseHelpers';
+import Icon from 'react-native-vector-icons/Octicons';
 
 class PhotoBoxContainer extends Component {
 
@@ -30,25 +31,40 @@ class PhotoBoxContainer extends Component {
     }
     _callSaveFave() {
         saveFave(faved(this.props.photo.id), this.props.photo.id)
+        this.setState({
+            isFaved: faved(this.props.photo.id)
+        })
+    }
+    _starRenderer(faved, iconName) {
+        const color = faved ? 'yellow' : colors.mediumGrey
+        return <Icon name={iconName} size={24} color={color} />
     }
     //do this but also with a faved so that we can change color of icon conditionally
     constructor(props) {
         super(props);
         this._goBackRecent = this._goBackRecent.bind(this)
 
+        this.state = {
+            isFaved: false,
+        }
+
     }
-
-
+    componentWillMount() {
+        if(this.props.phot)
+        this.setState({ isFaved: faved(this.props.photo.id)})
+    }
 
     render() {
         console.log("photos", this.props)
 
         return (
-            <PhotoBox 
-                photo={this.props.photo} 
-                goToRecent={this._goBackRecent} 
+            <PhotoBox
+                photo={this.props.photo}
+                goToRecent={this._goBackRecent}
                 callSaveFave={this._callSaveFave.bind(this)}
-            />
+                starRenderer={this._starRenderer.bind(this)}
+                isFaved={this.state.isFaved}
+                />
         )
     }
 }
