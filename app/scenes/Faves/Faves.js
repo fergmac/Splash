@@ -1,25 +1,43 @@
-import React from 'react';
+import React, { PropTypes } from 'react';
 import {
     View,
     Text,
-    StyleSheet,
+    ListView,
+    Image,
 } from 'react-native';
+import { styles } from './styles';
 
+// const getPhoto = (data) => {
+//     console.log(data)
+//     console.log(data.urls.raw)
+
+//     var url = data.urls.raw
+
+//     if( !url )
+//         url = data.urls.raw
+
+//     return (
+//               <View><Image style={styles.photo} source={{ uri: url}} /></View>
+//     )
+// }
 
 const Faves = (props) => {
+    console.log("faves", props.favedPhotos)
     return (
-            <View>
-               <Text>Faves</Text>
-            </View>
+        <View style={styles.container}>
+        <ListView
+            contentContainerStyle={styles.photoGallery}
+            dataSource={props.favedPhotos}
+            renderRow={(data) => 
+                <View><Image style={styles.photo} source={{ uri: data.urls.raw }} /></View>
+             }
+            />
+        </View >
     )
 }
 
-const styles = StyleSheet.create({
-
-});
-
 Faves.propTypes = {
-
+    favedPhotos: PropTypes.object.isRequired
 }
 
 export default Faves;

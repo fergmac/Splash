@@ -25,3 +25,7 @@ export const saveFave = (faved, photoId) => {
         }
     })
 }
+
+export const getFavedPhotos = () => {
+    return realm.objects('Fave').sorted('faved_on', true)
+}

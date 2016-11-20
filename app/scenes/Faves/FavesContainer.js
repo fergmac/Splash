@@ -4,10 +4,14 @@ import {
     Text,
     View,
     ActivityIndicator,
+    ListView,
 } from 'react-native';
 import { toJson } from 'unsplash-js/native'
 import { unsplash } from '../../config/settings.js'
 import Faves from './Faves';
+import Loader from '../../components/Loader';
+import { getFavedPhotos } from '../../lib/databaseHelpers';
+import { getFavedPhotoData } from '../../lib/splashHelpers';
 
 class FavesContainer extends Component {
 
@@ -16,7 +20,7 @@ class FavesContainer extends Component {
         navigation: PropTypes.object.isRequired,
         navigator: PropTypes.object.isRequired
     };
-    
+
     static route = {
         navigationBar: {
             title: 'Faves',
@@ -24,24 +28,50 @@ class FavesContainer extends Component {
     }
     constructor(props) {
         super(props);
+        this.ds = new ListView.DataSource({ rowHasChanged: (r1, r2) => r1 !== r2 });
 
         this.state = {
+            dataSource: this.ds,
             isLoading: true,
         }
 
     }
 
+    componentDidMount() {
+        //instead call method 
+        console.log("componentDidMount")
+        this.getFavedPhotoDataToJson();
+    }
+    componentDidUpdate() {
+        console.log("comonentDidUpdate")
+        if (this.state.dataSource && this.state.isLoading) {
+            console.log("isloading: false")
+            this.setState({ isLoading: false });
+        }
+    }
+
 
     render() {
+        console.log("render faves container")
         if (this.state.isLoading) {
             return (
-                <ActivityIndicator animating={true} size="small" color="black" />
+                <Loader />
             );
         } else {
             return (
-                <Faves />
+                <Faves favedPhotos={this.state.dataSource} />
             )
         }
+    }
+        getFavedPhotoDataToJson() {
+            getFavedPhotoData(getFavedPhotos())
+            .then(results => {
+                console.log(results)
+                this.setState({
+                    dataSource: this.ds.cloneWithRows(results)
+                });
+            })
+            .catch(error => console.log(`Error fetching photo JSON: ${error}`));
     }
 }
 
