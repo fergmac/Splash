@@ -14,6 +14,7 @@ import { getFavedPhotos } from '../../lib/databaseHelpers';
 import { getFavedPhotoData } from '../../lib/splashHelpers';
 import { Router } from '../../navigation/routes';
 
+
 class FavesContainer extends Component {
 
     static propTypes = {
