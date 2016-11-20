@@ -12,6 +12,7 @@ import Faves from './Faves';
 import Loader from '../../components/Loader';
 import { getFavedPhotos } from '../../lib/databaseHelpers';
 import { getFavedPhotoData } from '../../lib/splashHelpers';
+import { Router } from '../../navigation/routes';
 
 class FavesContainer extends Component {
 
@@ -26,8 +27,13 @@ class FavesContainer extends Component {
             title: 'Faves',
         }
     }
+    _goToPhotoBox(photo) {
+        this.props.navigation.getNavigator('ferg')
+            .push(Router.getRoute('photoBox', { photo }));
+    }
     constructor(props) {
         super(props);
+        this._goToPhotoBox = this._goToPhotoBox.bind(this)
         this.ds = new ListView.DataSource({ rowHasChanged: (r1, r2) => r1 !== r2 });
 
         this.state = {
@@ -59,12 +65,12 @@ class FavesContainer extends Component {
             );
         } else {
             return (
-                <Faves favedPhotos={this.state.dataSource} />
+                <Faves favedPhotos={this.state.dataSource} goToPhotoBox={this._goToPhotoBox}/>
             )
         }
     }
-        getFavedPhotoDataToJson() {
-            getFavedPhotoData(getFavedPhotos())
+    getFavedPhotoDataToJson() {
+        getFavedPhotoData(getFavedPhotos())
             .then(results => {
                 console.log(results)
                 this.setState({
