@@ -1,17 +1,17 @@
-import { StyleSheet } from 'react-native';
+import { StyleSheet, Dimensions } from 'react-native';
 
 export const styles = StyleSheet.create({
     container: {
         flex: 1,
+        position: 'absolute'
     },
     image: {
-        height: 650,
-        width: 400,
+        width: Dimensions.get('window').width,
+        height: Dimensions.get('window').height,
     },
-    images: {
-        flex: 1,
-        height: 50,
-        width: 50,
-
+    avatar: {
+        position: 'relative',
+        top: 455,
+        backgroundColor: 'rgba(255, 255, 255, 0.5)'
     }
 })

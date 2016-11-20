@@ -9,6 +9,7 @@ import { toJson } from 'unsplash-js/native'
 import { unsplash } from '../../config/settings.js'
 // import { randomStyles } from './styles.js'
 import Random from './Random';
+import Loader from '../../components/Loader';
 
 class RandomContainer extends Component {
 
@@ -48,7 +49,7 @@ class RandomContainer extends Component {
     render() {
         if (this.state.isLoading) {
             return (
-                <ActivityIndicator animating={true} size="small" color="black" />
+                <Loader />
             );
         } else {
             return (

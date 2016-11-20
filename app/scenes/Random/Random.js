@@ -6,7 +6,7 @@ import {
     StyleSheet,
 } from 'react-native';
 import { UserAvatar } from '../../components/UserAvatar';
-import styles from './styles';
+import { styles } from './styles';
 
 
 const Random = (props) => {
@@ -18,7 +18,9 @@ const Random = (props) => {
                     source={{ uri: props.randomPhoto.urls.raw }}
                     style={styles.image}
                     >
+                    <View style={styles.avatar}>
                     <UserAvatar user={props.randomPhoto.user} />
+                    </View>
                 </Image>
             </View>
     )
