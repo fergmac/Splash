@@ -4,6 +4,7 @@ import {
     Image,
     Text,
     StyleSheet,
+    TouchableHighlight
 } from 'react-native';
 import { UserAvatar } from '../../components/UserAvatar';
 import { styles } from './styles';
@@ -13,6 +14,7 @@ const Random = (props) => {
     console.log(props.randomPhoto)
     return (
             <View style={styles.container}>
+            <TouchableHighlight onPress={() => props.goToPhotoBox(props.randomPhoto)}>
                 <Image
                     resizeMode={'cover'}
                     source={{ uri: props.randomPhoto.urls.raw }}
@@ -22,6 +24,7 @@ const Random = (props) => {
                     <UserAvatar user={props.randomPhoto.user} />
                     </View>
                 </Image>
+                </TouchableHighlight>
             </View>
     )
 }

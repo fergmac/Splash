@@ -1,0 +1,22 @@
+{
+    "parser": "babel-eslint",
+    "env": {
+        "browser": true
+    },
+    "plugins": [
+        "react"
+    ],
+    "extends": [
+        "airbnb",
+        "eslint:recommended",
+        "plugin:react/recommended"
+    ],
+    "rules": {
+      "max-len": 0,
+      "global-require": 0,
+      "no-case-declarations": 0,
+      "no-param-reassign": 1,
+      "prefer-stateless-function": 0,
+      "react/jsx-no-bind": 1
+    }
+}

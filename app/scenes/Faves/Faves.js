@@ -4,6 +4,7 @@ import {
     Text,
     ListView,
     Image,
+    TouchableHighlight
 } from 'react-native';
 import { styles } from './styles';
 
@@ -29,7 +30,11 @@ const Faves = (props) => {
             contentContainerStyle={styles.photoGallery}
             dataSource={props.favedPhotos}
             renderRow={(data) => 
-                <View><Image style={styles.photo} source={{ uri: data.urls.raw }} /></View>
+                <View>
+                <TouchableHighlight onPress={() => props.goToPhotoBox(data)}>
+                <Image style={styles.photo} source={{ uri: data.urls.raw }} />
+                </TouchableHighlight>
+                </View>
              }
             />
         </View >
