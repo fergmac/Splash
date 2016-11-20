@@ -59,6 +59,7 @@ class RecentContainer extends Component {
 
 
     render() {
+        console.log("this", this)
         if (this.state.isLoading) {
             return (
                 <Loader />

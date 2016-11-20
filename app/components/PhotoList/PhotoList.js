@@ -29,7 +29,7 @@ const PhotoList = (props) => {
                             </TouchableOpacity>
                             <View style={styles.text}>
                             <Text>{data.created_at}</Text>
-                            <Text>{data.location.city}, {data.location.country}</Text>
+                            
                             </View>
                         </View>)
                 } }
@@ -41,3 +41,5 @@ PhotoList.propTypes = {
     recentPhotos: PropTypes.object.isRequired,
 }
 export default PhotoList;
+
+//<Text>{data.location.city}, {data.location.country}</Text>

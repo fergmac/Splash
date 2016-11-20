@@ -8,6 +8,8 @@ import {
 import { toJson } from 'unsplash-js/native'
 import { unsplash } from '../../config/settings.js'
 import About from './About';
+import Loader from '../../components/Loader';
+import realm from '../../config/models';
 
 class AboutContainer extends Component {
     static propTypes = {
@@ -31,9 +33,10 @@ class AboutContainer extends Component {
 
 
     render() {
+        console.log(realm.path)
         if (this.state.isLoading) {
             return (
-                <ActivityIndicator animating={true} size="small" color="black" />
+                <Loader />
             );
         } else {
             return (
