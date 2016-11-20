@@ -10,6 +10,7 @@ import { unsplash } from '../../config/settings.js'
 // import { randomStyles } from './styles.js'
 import Random from './Random';
 import Loader from '../../components/Loader';
+import { Router } from '../../navigation/routes';
 
 class RandomContainer extends Component {
 
@@ -23,8 +24,13 @@ class RandomContainer extends Component {
             title: 'Random',
         }
     }
+    _goToPhotoBox(photo) {
+        this.props.navigation.getNavigator('ferg')
+            .push(Router.getRoute('photoBox', { photo }));
+    }
     constructor(props) {
         super(props);
+        this._goToPhotoBox = this._goToPhotoBox.bind(this)
 
         this.state = {
             isLoading: true,
@@ -53,7 +59,7 @@ class RandomContainer extends Component {
             );
         } else {
             return (
-                <Random randomPhoto={this.state.randomPhoto} />
+                <Random randomPhoto={this.state.randomPhoto} goToPhotoBox={this._goToPhotoBox}/>
             )
         }
     }
