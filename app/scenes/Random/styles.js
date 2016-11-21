@@ -11,7 +11,7 @@ export const styles = StyleSheet.create({
     },
     avatar: {
         position: 'relative',
-        top: 455,
+        top: 460,
         backgroundColor: 'rgba(255, 255, 255, 0.5)'
     }
 })
