@@ -1,12 +1,9 @@
 import React, { Component, PropTypes } from 'react';
 import {
-    Image,
-    View,
-    ActivityIndicator,
     ListView,
 } from 'react-native';
 import { toJson } from 'unsplash-js/native'
-import { unsplash } from '../../config/settings.js'
+import { unsplash } from '../../config/settings'
 import Recent from './Recent';
 import Loader from '../../components/Loader';
 import { getFullPhotoData } from '../../lib/splashHelpers';
@@ -27,13 +24,7 @@ class RecentContainer extends Component {
             title: 'Recent',
         }
     }
-    _goToUser(username) {
-        this.props.navigator.push(Router.getRoute('user', { username }));
-    }
-    _goToPhotoBox(photo) {
-        this.props.navigation.getNavigator('ferg')
-        .push(Router.getRoute('photoBox', { photo }));
-    }
+
     constructor(props) {
         super(props);
         this._goToUser = this._goToUser.bind(this)
@@ -51,28 +42,12 @@ class RecentContainer extends Component {
     componentWillMount() {
         this.getRecentPhotosJson();
     }
-    componentDidUpdate() {
+    componentWillUpdate() {
         if (this.state.dataSource && this.state.isLoading) {
             this.setState({ isLoading: false });
         }
     }
-
-
-    render() {
-        console.log("this", this)
-        if (this.state.isLoading) {
-            return (
-                <Loader />
-            );
-        } else {
-
-            return (
-                <Recent recentPhotos={this.state.dataSource} goToUser={this._goToUser} goToPhotoBox={this._goToPhotoBox}/>
-            );
-        }
-    }
-
-    getRecentPhotosJson() {
+        getRecentPhotosJson() {
         unsplash.photos.listPhotos(1, 2, 'latest')
             //changes json data into array of object literals
             .then(toJson)
@@ -89,6 +64,29 @@ class RecentContainer extends Component {
             })
             .catch(error => console.log(`Error fetching photo JSON: ${error}`));
     }
+    _goToUser(username) {
+        this.props.navigator.push(Router.getRoute('user', { username }));
+    }
+    _goToPhotoBox(photo) {
+        this.props.navigation.getNavigator('ferg')
+        .push(Router.getRoute('photoBox', { photo }));
+    }
+
+    render() {
+        console.log("this", this)
+        if (this.state.isLoading) {
+            return (
+              <Loader />
+            );
+        } else {
+
+            return (
+              <Recent recentPhotos={this.state.dataSource} goToUser={this._goToUser} goToPhotoBox={this._goToPhotoBox} />
+            );
+        }
+    }
+
+
 
 }
 

@@ -1,3 +1,4 @@
+/* eslint-disable */
 import Unsplash, { toJson } from 'unsplash-js/native';
 import { unsplash } from '../config/settings';
 

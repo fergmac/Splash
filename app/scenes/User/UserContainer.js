@@ -1,14 +1,11 @@
 import React, { Component, PropTypes } from 'react';
 import {
-    Text,
-    View,
     ListView,
-    ActivityIndicator,
 } from 'react-native';
 import { toJson } from 'unsplash-js/native';
-import { unsplash } from '../../config/settings.js';
+import { unsplash } from '../../config/settings';
 import User from './User';
-import Router from '../../navigation/routes.js';
+// import Router from '../../navigation/routes.js';
 import Loader from '../../components/Loader';
 
 class UserContainer extends Component {
@@ -23,9 +20,7 @@ class UserContainer extends Component {
             title: 'User',
         }
     }
-    _goBackRecent() {
-        props.navigator.pop();
-    }
+
     constructor(props) {
         super(props);
         this._goBackRecent = this._goBackRecent.bind(this)
@@ -45,27 +40,12 @@ class UserContainer extends Component {
 
 
     }
-    componentDidUpdate() {
+    componentWillUpdate() {
         if (this.state.user && this.state.isLoading) {
             this.setState({ isLoading: false, });
         }
     }
-
-
-    render() {
-        console.log("hello", this)
-        if (this.state.isLoading) {
-            return (
-                <Loader />
-            );
-        } else {
-            return (
-                <User user={this.state.user} photos={this.state.dataSource} goToRecent={this._goBackRecent} />
-            )
-        }
-    }
-
-    getUserProfile(username) {
+        getUserProfile(username) {
         unsplash.users.profile(username)
             .then(toJson)
             .then(json => {
@@ -84,6 +64,24 @@ class UserContainer extends Component {
             })
             .catch(error => console.log(`Error fetching photo JSON: ${error}`));
     }
+    _goBackRecent() {
+        this.props.navigator.pop();
+    }
+
+    render() {
+        console.log("hello", this)
+        if (this.state.isLoading) {
+            return (
+              <Loader />
+            );
+        } else {
+            return (
+              <User user={this.state.user} photos={this.state.dataSource} goToRecent={this._goBackRecent} />
+            )
+        }
+    }
+
+
 
 }
 

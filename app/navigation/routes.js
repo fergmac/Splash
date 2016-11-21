@@ -1,3 +1,4 @@
+/* eslint-disable */
 import {
     createRouter,
 } from '@exponent/ex-navigation';

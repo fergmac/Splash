@@ -1,3 +1,4 @@
+
 import React, { PropTypes } from 'react';
 import {
     Text,
@@ -13,28 +14,26 @@ import { UserAvatar } from '../UserAvatar';
 const PhotoList = (props) => {
     console.log("url", props.recentPhotos)
     return (
-        <View style={styles.container}>
-            <ListView
-                dataSource={props.recentPhotos}
-                renderRow={(data) => {
+      <View style={styles.container}>
+        <ListView
+          dataSource={props.recentPhotos}
+          renderRow={(data) => {
                     return (
-                        <View style={styles.row}>
+                      <View style={styles.row}>
+                        <TouchableHighlight onPress={() => props.goToPhotoBox(data)}>
+                          <Image style={styles.image} source={{ uri: data.urls.raw }} />
+                        </TouchableHighlight>
+                        <TouchableOpacity onPress={() => props.goToUser(data.user.username)}>
+                          <UserAvatar user={data.user} />
+                        </TouchableOpacity>
+                        <View style={styles.createdAt}>
+                          <Text>{data.created_at}</Text>
                             
-                            <TouchableHighlight onPress={() => props.goToPhotoBox(data)}>
-                                <Image style={styles.image} source={{ uri: data.urls.raw }} >
-                                </Image>
-                            </TouchableHighlight>
-                            <TouchableOpacity onPress={() => props.goToUser(data.user.username)}>
-                                <UserAvatar user={data.user} />
-                            </TouchableOpacity>
-                            <View style={styles.createdAt}>
-                            <Text>{data.created_at}</Text>
-                            
-                            </View>
-                        </View>)
-                } }
-                />
-        </View>
+                        </View>
+                      </View>)
+                }}
+        />
+      </View>
     );
 }
 PhotoList.propTypes = {

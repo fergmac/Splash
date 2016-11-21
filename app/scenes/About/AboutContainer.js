@@ -1,12 +1,4 @@
 import React, { Component, PropTypes } from 'react';
-import {
-    Image,
-    Text,
-    View,
-    ActivityIndicator,
-} from 'react-native';
-import { toJson } from 'unsplash-js/native'
-import { unsplash } from '../../config/settings.js'
 import About from './About';
 import Loader from '../../components/Loader';
 import realm from '../../config/models';
@@ -36,11 +28,11 @@ class AboutContainer extends Component {
         console.log(realm.path)
         if (this.state.isLoading) {
             return (
-                <Loader />
+              <Loader />
             );
         } else {
             return (
-                <About />
+              <About />
             )
         }
     }

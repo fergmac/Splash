@@ -1,12 +1,7 @@
 import React, { Component, PropTypes } from 'react';
-import {
-    Image,
-    Text,
-    View,
-    ActivityIndicator,
-} from 'react-native';
-import { toJson } from 'unsplash-js/native'
 import { unsplash } from '../../config/settings.js'
+import { toJson } from 'unsplash-js/native'
+
 // import { randomStyles } from './styles.js'
 import Random from './Random';
 import Loader from '../../components/Loader';
@@ -24,10 +19,7 @@ class RandomContainer extends Component {
             title: 'Random',
         }
     }
-    _goToPhotoBox(photo) {
-        this.props.navigation.getNavigator('ferg')
-            .push(Router.getRoute('photoBox', { photo }));
-    }
+
     constructor(props) {
         super(props);
         this._goToPhotoBox = this._goToPhotoBox.bind(this)
@@ -45,21 +37,25 @@ class RandomContainer extends Component {
             })
             .catch(error => console.log(`Error fetching JSON: ${error}`));
     }
-    componentDidUpdate() {
+    componentWillUpdate() {
         if (this.state.randomPhoto && this.state.isLoading) {
             this.setState({ isLoading: false, });
         }
     }
 
+    _goToPhotoBox(photo) {
+        this.props.navigation.getNavigator('ferg')
+            .push(Router.getRoute('photoBox', { photo }));
+    }
 
     render() {
         if (this.state.isLoading) {
             return (
-                <Loader />
+              <Loader />
             );
         } else {
             return (
-                <Random randomPhoto={this.state.randomPhoto} goToPhotoBox={this._goToPhotoBox}/>
+              <Random randomPhoto={this.state.randomPhoto} goToPhotoBox={this._goToPhotoBox} />
             )
         }
     }

@@ -1,7 +1,6 @@
 import React, { PropTypes } from 'react';
 import {
     View,
-    Text,
     ListView,
     Image,
     TouchableHighlight
@@ -25,19 +24,19 @@ import { styles } from './styles';
 const Faves = (props) => {
     console.log("faves", props.favedPhotos)
     return (
-        <View style={styles.container}>
+      <View style={styles.container}>
         <ListView
-            contentContainerStyle={styles.photoGallery}
-            dataSource={props.favedPhotos}
-            renderRow={(data) => 
-                <View>
-                <TouchableHighlight onPress={() => props.goToPhotoBox(data)}>
+          contentContainerStyle={styles.photoGallery}
+          dataSource={props.favedPhotos}
+          renderRow={(data) => 
+            <View>
+              <TouchableHighlight onPress={() => props.goToPhotoBox(data)}>
                 <Image style={styles.photo} source={{ uri: data.urls.raw }} />
-                </TouchableHighlight>
-                </View>
+              </TouchableHighlight>
+            </View>
              }
-            />
-        </View >
+        />
+      </View >
     )
 }
 

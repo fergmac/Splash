@@ -1,24 +1,24 @@
 
-import React from 'react';
-import {
-    View,
-    Image,
-    Text,
-    StyleSheet,
-} from 'react-native';
+// import React from 'react';
+// import {
+//     View,
+//     Image,
+//     Text,
+//     StyleSheet,
+// } from 'react-native';
 
-const Header = (props) => {
-    return (
-        <View>
-        </View>
-    );
-}
+// const Header = (props) => {
+//     return (
+//         <View>
+//         </View>
+//     );
+// }
 
-const styles = StyleSheet.create({
+// const styles = StyleSheet.create({
 
-});
+// });
 
-Header.propTypes = {
-}
+// Header.propTypes = {
+// }
 
-export default Header;
+// export default Header;

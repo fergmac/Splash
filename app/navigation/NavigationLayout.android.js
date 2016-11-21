@@ -1,3 +1,4 @@
+
 //build out tab navigation
 import React, { Component } from 'react';
 import {
@@ -5,7 +6,7 @@ import {
     DrawerNavigation,
     DrawerNavigationItem,
 } from '@exponent/ex-navigation';
-import { StyleSheet, View, Text, isSelected } from 'react-native';
+import { StyleSheet, View, Text } from 'react-native';
 import { Router } from './routes';
 import Icon from 'react-native-vector-icons/Octicons';
 import { colors } from '../config/styles';
@@ -29,24 +30,13 @@ class NavigationLayout extends Component {
         }
     };
 
-    // iconRenderer(isSelected, iconName) {
-    //     const color = isSelected ? 'black' : colors.mediumGrey
-    //     return <Icon name={iconName} size={24} color={color} />
-    // }
-
-    // renderTitleFunction here
     _renderHeader() {
         return (
             <View style={styles.header}>
             </View>
         );
-    };
-    // _renderIcon() {
-    //     const color = isSelected ? 'black' : colors.mediumGrey
-    //     return (
-    //         <Icon name={iconName} size={24} color={color} />
-    //     );   
-    // };
+    }
+
     _renderTitle(text, iconName,  isSelected) {
         const color = isSelected ? 'black' : colors.mediumGrey
         return (
@@ -54,78 +44,65 @@ class NavigationLayout extends Component {
                 <Icon name={iconName} size={24} color={color} /> <Text>{text}</Text>
             </Text>
         );
-    };
-
+    }
 
 
     render() {
         return (
-            <DrawerNavigation
-                id="main"
-                drawerWidth={300}
-                renderHeader={this._renderHeader}
-                initialItem="recent">
-                <DrawerNavigationItem
-                    id="recent"
-                    title="Recent"
-                    // renderIcon={isSelected => this._RenderIcon('watch', isSelected)}
-                    renderTitle={isSelected => this._renderTitle('Recent', 'watch', isSelected)}
-                    // selectedStyle={styles.selectedTab}
-                    // renderIcon={(isSelected) => <Image source={require('../images/recent.png')} />} 
-                    >
-                    <StackNavigation
-                        id="recent"
-                        navigatorUID="recent"
-                        initialRoute={Router.getRoute('recent')}
-                        defaultRouteConfig={defaultRouteConfig}
-                        />
-                </DrawerNavigationItem>
+          <DrawerNavigation
+            id="main"
+            drawerWidth={300}
+            renderHeader={this._renderHeader}
+            initialItem="recent">
+            <DrawerNavigationItem
+              id="recent"
+              title="Recent"
+              renderTitle={isSelected => this._renderTitle('Recent', 'watch', isSelected)}
+            >
+              <StackNavigation
+                id="recent"
+                navigatorUID="recent"
+                initialRoute={Router.getRoute('recent')}
+                defaultRouteConfig={defaultRouteConfig}
+              />
+            </DrawerNavigationItem>
 
-                <DrawerNavigationItem
-                    id="random"
-                    title="Random"
-                    // renderIcon={isSelected => this._RenderIcon('smiley', isSelected)}
-                    renderTitle={isSelected => this._renderTitle('Random', 'smiley', isSelected)}
-                    // selectedStyle={styles.selectedTab}
-                    // renderIcon={(isSelected) => <Image source={require('../images/random.png')} />}
-                    >
-                    <StackNavigation
-                        id="random"
-                        initialRoute={Router.getRoute('random')}
-                        defaultRouteConfig={defaultRouteConfig}
-                        />
-                </DrawerNavigationItem>
+            <DrawerNavigationItem
+              id="random"
+              title="Random"
+              renderTitle={isSelected => this._renderTitle('Random', 'smiley', isSelected)}
+            >
+              <StackNavigation
+                id="random"
+                initialRoute={Router.getRoute('random')}
+                defaultRouteConfig={defaultRouteConfig}
+              />
+            </DrawerNavigationItem>
 
-                <DrawerNavigationItem
-                    id="faves"
-                    title="Faves"
-                    // renderIcon={isSelected => this._RenderIcon('heart', isSelected)}
-                    renderTitle={isSelected => this._renderTitle('Faves', 'heart', isSelected)}
-                    // selectedStyle={styles.selectedTab}
-                    // renderIcon={(isSelected) => <Image source={require('../images/faves.png')} />}
-                    >
-                    <StackNavigation
-                        id="faves"
-                        initialRoute={Router.getRoute('faves')}
-                        defaultRouteConfig={defaultRouteConfig}
-                        />
-                </DrawerNavigationItem>
+            <DrawerNavigationItem
+              id="faves"
+              title="Faves"
+              renderTitle={isSelected => this._renderTitle('Faves', 'heart', isSelected)}
+            >
+              <StackNavigation
+                id="faves"
+                initialRoute={Router.getRoute('faves')}
+                defaultRouteConfig={defaultRouteConfig}
+              />
+            </DrawerNavigationItem>
 
-                <DrawerNavigationItem
-                    id="about"
-                    title="About"
-                    // renderIcon={isSelected => this._iconRenderer('info', isSelected)}
-                    renderTitle={isSelected => this._renderTitle('About', 'info', isSelected)}
-                    // selectedStyle={styles.selectedTab}
-                    // renderIcon={(isSelected) => <Image source={require('../images/about.png')} />}
-                    >
-                    <StackNavigation
-                        id="about"
-                        initialRoute={Router.getRoute('about')}
-                        defaultRouteConfig={defaultRouteConfig}
-                        />
-                </DrawerNavigationItem>
-            </DrawerNavigation>
+            <DrawerNavigationItem
+              id="about"
+              title="About"
+              renderTitle={isSelected => this._renderTitle('About', 'info', isSelected)}
+            >
+              <StackNavigation
+                id="about"
+                initialRoute={Router.getRoute('about')}
+                defaultRouteConfig={defaultRouteConfig}
+              />
+            </DrawerNavigationItem>
+          </DrawerNavigation>
         );
     }
 }

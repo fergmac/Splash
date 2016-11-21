@@ -28,16 +28,13 @@ class FavesContainer extends Component {
             title: 'Faves',
         }
     }
-    _goToPhotoBox(photo) {
-        this.props.navigation.getNavigator('ferg')
-            .push(Router.getRoute('photoBox', { photo }));
-    }
+
     constructor(props) {
         super(props);
         this._goToPhotoBox = this._goToPhotoBox.bind(this)
         this.ds = new ListView.DataSource({ rowHasChanged: (r1, r2) => r1 !== r2 });
 
-        realm.addListener('change', (changes) => {
+        realm.addListener('change', () => {
             this.getFavedPhotoDataToJson()
         })
 
@@ -68,25 +65,11 @@ componentDidMount() {
     console.log("componentDidMount")
     this.getFavedPhotoDataToJson();
 }
-componentDidUpdate() {
+componentWillUpdate() {
     console.log("comonentDidUpdate")
     if (this.state.dataSource && this.state.isLoading) {
         console.log("isloading: false")
         this.setState({ isLoading: false });
-    }
-}
-
-
-render() {
-    console.log("render faves container")
-    if (this.state.isLoading) {
-        return (
-            <Loader />
-        );
-    } else {
-        return (
-            <Faves favedPhotos={this.state.dataSource} goToPhotoBox={this._goToPhotoBox} />
-        )
     }
 }
 getFavedPhotoDataToJson() {
@@ -99,6 +82,25 @@ getFavedPhotoDataToJson() {
         })
         .catch(error => console.log(`Error fetching photo JSON: ${error}`));
 }
+_goToPhotoBox(photo) {
+    this.props.navigation.getNavigator('ferg')
+        .push(Router.getRoute('photoBox', { photo }));
+}
+
+
+render() {
+    console.log("render faves container")
+    if (this.state.isLoading) {
+        return (
+          <Loader />
+        );
+    } else {
+        return (
+          <Faves favedPhotos={this.state.dataSource} goToPhotoBox={this._goToPhotoBox} />
+        )
+    }
+}
+
 }
 
 export default FavesContainer;
