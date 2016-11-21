@@ -17,6 +17,7 @@ import { colors } from '../config/styles';
 const defaultRouteConfig = {
     navigationBar: {
         backgroundColor: 'white',
+        tintColor: colors.mediumGrey,
     }
 }
 
@@ -50,7 +51,7 @@ class NavigationLayout extends Component {
         const color = isSelected ? 'black' : colors.mediumGrey
         return (
             <Text style={[styles.titleText, isSelected ? styles.selectedTitleText : {}]}>
-                <Icon name={iconName} size={24} color={color} />{text}
+                <Icon name={iconName} size={24} color={color} /> <Text>{text}</Text>
             </Text>
         );
     };
@@ -134,13 +135,13 @@ class NavigationLayout extends Component {
         header: {
             height: 20
         },
-
         selectedItemStyle: {
             backgroundColor: 'blue'
         },
 
         titleText: {
-            fontWeight: 'bold'
+            fontWeight: 'bold',
+            justifyContent: 'space-around'
         },
 
         selectedTitleText: {
