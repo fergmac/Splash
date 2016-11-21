@@ -14,10 +14,20 @@ export const styles = StyleSheet.create({
         marginTop: 5,
     },
     image: {
-        height: Dimensions.get('window').height/2,
+        height: Dimensions.get('window').height / 2,
         width: Dimensions.get('window').width,
     },
-    text: {
+    createdAt: {
+        borderTopWidth: 1,
+        borderTopColor: 'lightgrey',
+        paddingTop: 10,
+        flexDirection: 'row',
+        justifyContent: 'space-between',
+    },
+    location: {
+        borderTopWidth: 1,
+        borderTopColor: 'lightgrey',
+        paddingTop: 10,
         flexDirection: 'row',
         justifyContent: 'space-between',
     }
