@@ -15,12 +15,12 @@ import { faved, saveFave } from '../../lib/databaseHelpers';
 
 const renderStarIcon = (isFaved, iconName, size) => {
     return (
-      <Icon name={iconName} size={24} color={isFaved ? 'yellow' : '#999999'} />
+      <Icon name={iconName} size={24} color={isFaved ? 'yellow' : '#FFFFFF'} />
     )
 }
 const renderIcon = (iconName, size) => {
     return (
-        <Icon name={iconName} size={size} color={'#999999'} />
+        <Icon name={iconName} size={size} color={'#FFFFFF'} />
     )
 }
 
@@ -31,7 +31,7 @@ const PhotoBox = (props) => {
             <View style={styles.header}>
                 <View style={styles.avatarContainer}>
                 <Image style={styles.avatar} source={{ uri: props.photo.user.profile_image.small }} />
-                <Text style={styles.text}>{props.photo.user.name}</Text>
+                <Text style={styles.avatarName}>{props.photo.user.name}</Text>
                 </View>
                 <TouchableHighlight onPress={props.goToRecent}>
                     {renderIcon('x', 24)}
@@ -50,10 +50,14 @@ const PhotoBox = (props) => {
                 </TouchableHighlight>
             </View>
             </Image>
-            <View style={styles.details}>
-                <Text style={styles.text} >Likes {props.photo.likes}</Text>
-                <Text style={styles.text} >Downloads {props.photo.downloads}</Text>
+          <View style={styles.details}>
+            <View style={styles.likes}>
+              <Text style={styles.text} >Likes</Text><Text style={styles.likeNumbers}> {props.photo.likes}</Text>
             </View>
+            <View style={styles.downloads}>
+              <Text style={styles.text} >Downloads</Text><Text style={styles.downloadNumbers}> {props.photo.downloads}</Text>
+            </View>
+          </View>
         </View>
     )
 }
