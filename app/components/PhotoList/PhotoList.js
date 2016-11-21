@@ -27,7 +27,7 @@ const PhotoList = (props) => {
                             <TouchableOpacity onPress={() => props.goToUser(data.user.username)}>
                                 <UserAvatar user={data.user} />
                             </TouchableOpacity>
-                            <View style={styles.text}>
+                            <View style={styles.createdAt}>
                             <Text>{data.created_at}</Text>
                             
                             </View>
