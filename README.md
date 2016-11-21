@@ -6,3 +6,9 @@ I built a mobile application using React Native that accesses the Unsplash API t
 posted photos and store their favourite photos in a database.
 
 This project is cross-platform (iOS/Android) and contains a database (Realm).
+
+## to start:
+
+react-native run-iOS
+
+android avd & react-native run-android
