@@ -40,9 +40,9 @@ class NavigationLayout extends Component {
     _renderTitle(text, iconName,  isSelected) {
         const color = isSelected ? 'black' : colors.mediumGrey
         return (
-            <Text style={[styles.titleText, isSelected ? styles.selectedTitleText : {}]}>
-                <Icon name={iconName} size={24} color={color} /> <Text>{text}</Text>
-            </Text>
+          <Text style={[styles.titleText, isSelected ? styles.selectedTitleText : {}]}>
+            <Icon name={iconName} size={24} color={color} /> <Text>{text}</Text>
+          </Text>
         );
     }
 
@@ -118,7 +118,9 @@ class NavigationLayout extends Component {
 
         titleText: {
             fontWeight: 'bold',
-            justifyContent: 'space-around'
+            justifyContent: 'space-around',
+            flexDirection: 'row',
+            alignItems: 'center'
         },
 
         selectedTitleText: {
