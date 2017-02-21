@@ -24,14 +24,14 @@ import Unsplash from 'unsplash-js/native';
   //   callbackUrl: 'urn:ietf:wg:oauth:2.0:oob'
   // });
 
-// export const unsplash = new Unsplash({
-//   applicationId: "4d874766e7dada26f3413b36a92330179160d746bf4cba20889f61cf0e85a93e",
-//   secret: "56ca6025ede6ac1163f5b7c3d43e2dfeba748f34fbd71bd89f5a3d3ff19f4e8e",
-//   callbackUrl: "urn:ietf:wg:oauth:2.0:oob"
-// });
-
 export const unsplash = new Unsplash({
-  applicationId: "1d448bab8a9996d0b5ba024e66c2fec480ea8e8736c57f73daadb39f875e23ac",
-  secret: "286576cbce225d0f460e74e1f27f0d92fc8a25dac95aef3d04ef683c2013053f",
+  applicationId: "4d874766e7dada26f3413b36a92330179160d746bf4cba20889f61cf0e85a93e",
+  secret: "56ca6025ede6ac1163f5b7c3d43e2dfeba748f34fbd71bd89f5a3d3ff19f4e8e",
   callbackUrl: "urn:ietf:wg:oauth:2.0:oob"
 });
+
+// export const unsplash = new Unsplash({
+//   applicationId: "1d448bab8a9996d0b5ba024e66c2fec480ea8e8736c57f73daadb39f875e23ac",
+//   secret: "286576cbce225d0f460e74e1f27f0d92fc8a25dac95aef3d04ef683c2013053f",
+//   callbackUrl: "urn:ietf:wg:oauth:2.0:oob"
+// });

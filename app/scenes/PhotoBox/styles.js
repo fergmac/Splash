@@ -26,7 +26,7 @@ export const styles = StyleSheet.create({
     },
     likes: {
         flex: 1,
-        justifyContent: 'center'
+        justifyContent: 'center',
     },
     downloads: {
         flex: 1,
@@ -44,7 +44,6 @@ export const styles = StyleSheet.create({
     downloadNumbers: {
         color: 'white',
         justifyContent: 'center',
-        marginLeft: 15,
         fontSize: 30
     },
     buttons: {
