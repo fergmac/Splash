@@ -48,8 +48,6 @@ class PhotoBoxContainer extends Component {
     }
 
     render() {
-        console.log("photos", this.props)
-
         return (
           <PhotoBox
             photo={this.props.photo}

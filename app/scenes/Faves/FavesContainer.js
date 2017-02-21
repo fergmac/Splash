@@ -62,20 +62,16 @@ this.state = {
 
 componentDidMount() {
     //instead call method 
-    console.log("componentDidMount")
     this.getFavedPhotoDataToJson();
 }
 componentWillUpdate() {
-    console.log("comonentDidUpdate")
     if (this.state.dataSource && this.state.isLoading) {
-        console.log("isloading: false")
         this.setState({ isLoading: false });
     }
 }
 getFavedPhotoDataToJson() {
     getFavedPhotoData(getFavedPhotos())
         .then(results => {
-            console.log(results)
             this.setState({
                 dataSource: this.ds.cloneWithRows(results)
             });
@@ -89,7 +85,6 @@ _goToPhotoBox(photo) {
 
 
 render() {
-    console.log("render faves container")
     if (this.state.isLoading) {
         return (
           <Loader />

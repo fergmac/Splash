@@ -9,7 +9,6 @@ import { styles } from './styles';
 
 
 const Random = (props) => {
-    console.log(props.randomPhoto)
     return (
       <View style={styles.container}>
         <TouchableHighlight onPress={() => props.goToPhotoBox(props.randomPhoto)}>

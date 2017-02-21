@@ -9,8 +9,6 @@ import { styles } from './styles';
 
 
 const User = (props) => {
-    console.log("user", props.user)
-    console.log("photos", props)
     return (
       <View style={styles.container}>
         <ListView

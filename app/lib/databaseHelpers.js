@@ -13,7 +13,6 @@ export const faved = (photoId) => {
 // photoId: string
 // saves photo as a fave in the db
 export const saveFave = (faved, photoId) => {
-    console.log(photoId)
     realm.write(() => {
         // let isStared = faves.filtered('id == $0',  favId);
         if (faved) {

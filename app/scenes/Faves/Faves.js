@@ -22,7 +22,6 @@ import { styles } from './styles';
 // }
 
 const Faves = (props) => {
-    console.log("faves", props.favedPhotos)
     return (
       <View style={styles.container}>
         <ListView

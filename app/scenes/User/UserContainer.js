@@ -69,7 +69,6 @@ class UserContainer extends Component {
     }
 
     render() {
-        console.log("hello", this)
         if (this.state.isLoading) {
             return (
               <Loader />

@@ -12,7 +12,6 @@ import {Route} from '../../scenes/Recent'
 
 
 const UserAvatar = (props) => {
-    console.log(props.user)
     return (
         <View style={styles.container}>
             <Image

@@ -57,7 +57,6 @@ class RecentContainer extends Component {
                 return getFullPhotoData(json);
             })
             .then(results => {
-                console.log(results)
                 this.setState({
                     dataSource: this.ds.cloneWithRows(results)
                 });
@@ -73,7 +72,6 @@ class RecentContainer extends Component {
     }
 
     render() {
-        console.log("this", this)
         if (this.state.isLoading) {
             return (
               <Loader />

@@ -24,7 +24,6 @@ const renderIcon = (iconName, size) => {
 }
 
 const PhotoBox = (props) => {
-    console.log("photos2", props.photo)
     return (
       <View style={styles.container} >
         <View style={styles.header}>
