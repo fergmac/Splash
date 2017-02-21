@@ -5,7 +5,6 @@ import {
 import { toJson } from 'unsplash-js/native';
 import { unsplash } from '../../config/settings';
 import User from './User';
-// import Router from '../../navigation/routes.js';
 import Loader from '../../components/Loader';
 
 class UserContainer extends Component {

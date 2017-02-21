@@ -1,6 +1,7 @@
 import React, { Component, PropTypes } from 'react';
-import { unsplash } from '../../config/settings.js'
 import { toJson } from 'unsplash-js/native'
+import { unsplash } from '../../config/settings'
+
 
 // import { randomStyles } from './styles.js'
 import Random from './Random';

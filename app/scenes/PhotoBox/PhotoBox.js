@@ -7,7 +7,6 @@ import {
     TouchableOpacity,
     TouchableHighlight,
     CameraRoll,
-    saveToCameraRoll,
     Platform,
 } from 'react-native';
 import { styles } from './styles';

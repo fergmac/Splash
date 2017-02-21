@@ -1,13 +1,7 @@
 import React, { Component, PropTypes } from 'react';
 import {
-    Image,
-    Text,
-    View,
-    ActivityIndicator,
     ListView,
 } from 'react-native';
-import { toJson } from 'unsplash-js/native'
-import { unsplash } from '../../config/settings.js'
 import Faves from './Faves';
 import Loader from '../../components/Loader';
 import { getFavedPhotos } from '../../lib/databaseHelpers';
