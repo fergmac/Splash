@@ -4,6 +4,7 @@ import {
     View,
     Image,
     Text,
+    TouchableOpacity,
     TouchableHighlight,
     CameraRoll,
     saveToCameraRoll,
@@ -38,13 +39,13 @@ const PhotoBox = (props) => {
         <Image style={styles.image} source={{ uri: props.photo.urls.raw }}>
           <View style={styles.buttons}>
             {Platform.OS === 'ios' &&
-              <TouchableHighlight onPress={() => CameraRoll.saveToCameraRoll(props.photo.urls.raw, "photo")}>
+              <TouchableOpacity onPress={() => CameraRoll.saveToCameraRoll(props.photo.urls.raw, "photo")}>
                 {renderIcon('cloud-download', 24)}
-              </TouchableHighlight>
+              </TouchableOpacity>
                 }
-            <TouchableHighlight onPress={props.callSaveFave}>
+            <TouchableOpacity onPress={props.callSaveFave}>
               {renderStarIcon(props.isFaved, 'star', 24)}
-            </TouchableHighlight>
+            </TouchableOpacity>
           </View>
         </Image>
         <View style={styles.details}>
