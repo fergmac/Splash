@@ -9,6 +9,8 @@ This project is cross-platform (iOS/Android) and contains a database (Realm).
 
 ## to start:
 
+npm install
+
 react-native run-iOS
 
 android avd & react-native run-android
