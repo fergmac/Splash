@@ -19,7 +19,7 @@ const UserAvatar = (props) => {
                 source={{ uri: props.user.profile_image.medium }}
                 style={styles.image}
                 >
-            </Image >
+            </Image>
             <Text style={styles.text}>{props.user.name}</Text>
         </View>
     );

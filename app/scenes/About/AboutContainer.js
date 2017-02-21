@@ -18,7 +18,7 @@ class AboutContainer extends Component {
         super(props);
 
         this.state = {
-            isLoading: true,
+            isLoading: false,
         }
 
     }
