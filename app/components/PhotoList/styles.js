@@ -30,5 +30,10 @@ export const styles = StyleSheet.create({
         paddingTop: 10,
         flexDirection: 'row',
         justifyContent: 'space-between',
+    },
+    time: {
+        color: 'grey',
+        paddingLeft: 20,
+        paddingBottom: 20,
     }
 })

@@ -8,8 +8,10 @@ import {
     TouchableOpacity,
     TouchableHighlight,
 } from 'react-native';
+import TimeAgo  from 'react-native-timeago';
 import { styles } from './styles';
 import { UserAvatar } from '../UserAvatar';
+
 
 const PhotoList = (props) => {
     console.log("url", props.recentPhotos)
@@ -27,7 +29,7 @@ const PhotoList = (props) => {
                           <UserAvatar user={data.user} />
                         </TouchableOpacity>
                         <View style={styles.createdAt}>
-                          <Text>{data.created_at}</Text>
+                          <TimeAgo style={styles.time} time={data.created_at} />
                             
                         </View>
                       </View>)
