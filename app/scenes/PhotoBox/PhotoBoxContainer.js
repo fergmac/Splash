@@ -27,7 +27,7 @@ class PhotoBoxContainer extends Component {
 
     }
     componentWillMount() {
-        if(this.props.phot)
+        if(this.props.photo)
         this.setState({ isFaved: faved(this.props.photo.id)})
     }
 
